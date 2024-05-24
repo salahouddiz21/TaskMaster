@@ -1,0 +1,523 @@
+/* Load Font From Local File */
+
+@font-face {
+  font-family: "Inter";
+  src: url(".././fonts/Inter-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(".././fonts/Inter-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(".././fonts/Inter-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* Define Some Default Styles for All Elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  min-height: 100%;
+  font-size: 16px;
+  background: var(--bg-secondary);
+}
+
+/* Global Variables */
+:root {
+  /* Gradient Background Color */
+  --bg: linear-gradient(130deg, #ad90c1 0%, rgb(3, 0, 84) 100%),
+    linear-gradient(130deg, #09007b 0%, rgba(15, 0, 66, 0) 30%),
+    linear-gradient(129.96deg, rgb(171, 49, 49) 10.43%, rgb(0, 4, 96) 92.78%),
+    radial-gradient(
+      100% 246.94% at 100% 0%,
+      rgb(255, 255, 255) 0%,
+      rgba(37, 0, 66, 0.8) 100%
+    ),
+    linear-gradient(121.18deg, rgb(94, 88, 160) 0.45%, rgb(95, 69, 130) 100%),
+    linear-gradient(154.03deg, rgb(206, 0, 0) 0%, rgb(255, 0, 61) 74.04%),
+    linear-gradient(341.1deg, rgb(178, 91, 186) 7.52%, rgb(16, 0, 119) 77.98%),
+    linear-gradient(222.34deg, rgb(169, 0, 0) 12.99%, rgb(0, 255, 224) 87.21%),
+    linear-gradient(150.76deg, rgb(41, 113, 46) 15.35%, rgb(172, 20, 119) 89.57%),
+    no-repeat;
+
+  /* Gradient Background Blend Mode */
+  --bg-blend: overlay, normal, overlay, color-burn, screen, overlay, difference,
+    difference, normal;
+
+  /* Secondary BG Color */
+  --bg-secondary: #f4f4f4;
+
+  --white: #ffffff;
+  --light-white: rgba(255, 255, 255, 0.5);
+
+  --muted-bg: #00000015;
+  --text-muted: #aeaeae;
+
+  /* Body Text Colors */
+  --text-primary: #353535;
+  --text-secondary: #505050;
+
+  /* Action Button Hover Colors */
+  --bg-finished: #00c187;
+  --bg-delete: #ff002e;
+
+  /* Todo Cards Number Colors */
+  --blue: #0d6efd;
+  --blue-bg: #0d6efd20;
+
+  --indigo: #6610f2;
+  --indigo-bg: #6610f220;
+
+  --purple: #6f42c1;
+  --purple-bg: #6f42c120;
+
+  --pink: #ff0099;
+  --pink-bg: #ff009920;
+
+  --red: #ff002e;
+  --red-bg: #ff002e20;
+
+  --orange: #fd7e14;
+  --orange-bg: #fd7e1420;
+
+  --yellow: #ffc107;
+  --yellow-bg: #ffc10720;
+
+  --green: #198754;
+  --green-bg: #19875420;
+
+  --teal: #00c187;
+  --teal-bg: #00c18720;
+
+  --cyan: #0dccf2;
+  --cyan-bg: #0dccf220;
+}
+
+/* body {
+  background: var(--bg);
+  background-blend-mode: var(--bg-blend);
+} */
+
+/* Header Section Styling */
+header {
+  background: var(--bg);
+  background-blend-mode: var(--bg-blend);
+  color: white;
+  padding: 6rem 2rem;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  text-align: center;
+}
+
+/* Header Intro */
+header #intro h1 {
+  font-size: 96px;
+  font-weight: 200;
+}
+
+header #intro h2 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+/* Header Form */
+header #todoForm {
+  min-width: 600px;
+  max-width: 800px;
+}
+header #todoForm form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+header #todoForm form input[type="text"] {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid var(--white);
+
+  outline: none;
+
+  background: none;
+  font-size: 24px;
+  text-align: center;
+  padding: 1rem;
+  color: var(--white);
+}
+
+header #todoForm form input[type="text"]:nth-child(2) {
+  width: 100%;
+  
+}
+
+header #todoForm form input[type="text"]::placeholder {
+  color: var(--light-white);
+  font-style: italic;
+}
+
+/* Form Submit Button Styling */
+header #todoForm form button {
+  background: none;
+  border: 0.3pt solid var(--light-white); /*hairline border*/
+  font-size: 40px;
+  color: var(--light-white);
+  height: 80px;
+  width: 80px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+header #todoForm form button:hover {
+  border: 0.3pt solid var(--white);
+  color: var(--white);
+  transition: 0.3s ease;
+}
+
+/* Main Section Styling */
+main {
+  padding: 6rem 2rem;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Main Section Heading */
+main h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 60px;
+  color: var(--text-primary);
+}
+
+/* Todo Cards Grid */
+main #todo {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  /* Change repeat(3) to repeat(auto-fit) for smaller screens */
+}
+
+/* Todo Card */
+main #todo .todo_card {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 20px 16px;
+
+  display: flex;
+  flex-flow: column;
+  gap: 12px;
+
+  /* Allow cards to take full content width */
+  align-self: start;
+  overflow-wrap: break-word;
+
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Special Status: TODO FINISHED */
+main #todo .todo_card .card_center.finished * {
+  filter: opacity(0.6);
+  text-decoration: line-through;
+}
+
+main #todo .todo_card .card_top {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+/* Show Button Active Status if the Task Marked Completed */
+main #todo .todo_card .card_top .action_buttons .btn_finished.active {
+  color: #00c187;
+  background-color: #00c18720;
+}
+
+main #todo .todo_card .card_top .card_number {
+  color: var(--text-secondary);
+  background-color: var(--muted-bg);
+  height: 2rem;
+  width: 2rem;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 100%;
+  font-weight: 600;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Card Top Number Colors */
+main #todo .todo_card:nth-child(odd) .card_top .card_number {
+  color: var(--blue);
+  background-color: var(--blue-bg);
+}
+
+main #todo .todo_card:nth-child(even) .card_top .card_number {
+  color: var(--purple);
+  background-color: var(--purple-bg);
+}
+
+main #todo .todo_card:nth-child(3n) .card_top .card_number {
+  color: var(--orange);
+  background-color: var(--orange-bg);
+}
+
+main #todo .todo_card:nth-child(4n) .card_top .card_number {
+  color: var(--pink);
+  background-color: var(--pink-bg);
+}
+
+main #todo .todo_card:nth-child(5n) .card_top .card_number {
+  color: var(--teal);
+  background-color: var(--teal-bg);
+}
+
+main #todo .todo_card:nth-child(6n) .card_top .card_number {
+  color: var(--indigo);
+  background-color: var(--indigo-bg);
+}
+
+main #todo .todo_card:nth-child(7n) .card_top .card_number {
+  color: var(--green);
+  background-color: var(--green-bg);
+}
+
+main #todo .todo_card:nth-child(8n) .card_top .card_number {
+  color: var(--red);
+  background-color: var(--red-bg);
+}
+
+main #todo .todo_card:nth-child(9n) .card_top .card_number {
+  color: var(--text-primary);
+  background-color: var(--muted-bg);
+}
+
+main #todo .todo_card:nth-child(10n) .card_top .card_number {
+  color: var(--cyan);
+  background-color: var(--cyan-bg);
+}
+
+main #todo .todo_card:nth-child(11n) .card_top .card_number {
+  color: var(--yellow);
+  background-color: var(--yellow-bg);
+}
+
+/* Card Action Buttons */
+main #todo .todo_card .card_top .action_buttons {
+  display: flex;
+  flex-flow: row;
+  gap: 12px;
+}
+
+main #todo .todo_card .card_top .action_buttons .btn {
+  color: var(--text-secondary);
+  background-color: var(--muted-bg);
+  height: 2rem;
+  width: 2rem;
+  text-align: center;
+  border-radius: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hover State on Action Buttons */
+main #todo .todo_card .card_top .action_buttons .btn.btn_finished:hover {
+  background-color: var(--bg-finished);
+  transition: 0.3s ease;
+  color: #ffffff !important;
+}
+
+main #todo .todo_card .card_top .action_buttons .btn.btn_delete:hover {
+  background-color: var(--bg-delete);
+  transition: 0.3s ease;
+  color: #ffffff !important;
+}
+
+main #todo .todo_card .card_top .action_buttons .btn.btn_update:hover {
+  background-color: blue;
+  transition: 0.3s ease;
+  color: #ffffff !important;
+}
+
+/* Focus State on Buttons */
+main #todo .todo_card .card_top .action_buttons .btn:active,
+main #todo .todo_card .card_top .action_buttons .btn:focus {
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+}
+
+/* Todo Card Center Items Styles  */
+main #todo .todo_card .card_center {
+  display: flex;
+  flex-flow: column;
+  gap: 12px;
+}
+
+main #todo .todo_card .card_center h4 {
+  font-size: 20px;
+  color: var(--text-primary);
+  font-weight: 600;
+
+  /* Truncate */
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+}
+
+main #todo .todo_card .card_center p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: normal;
+  line-height: 130%;
+}
+
+/* Todo Card Bottom Styles */
+
+main #todo .todo_card .card_bottom {
+  text-align: right;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted);
+  /* margin-top: 1rem; */
+}
+
+/*    Responsive Codes     */
+/* Small devices */
+@media (max-width: 430px) {
+  header {
+    padding: 6rem 1rem !important;
+  }
+  header #intro h1 {
+    font-size: xx-large !important;
+  }
+  header #intro h2 {
+    font-size: large !important;
+  }
+
+  header #todoForm {
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  header #todoForm form input[type="text"] {
+    font-size: 1rem !important;
+  }
+
+  header #todoForm form input[type="text"]::placeholder {
+    font-size: 14px !important;
+  }
+
+  header #todoForm form input[type="text"]:nth-child(2) {
+    width: initial !important;
+  }
+
+  header #todoForm form button {
+    font-size: 30px !important;
+    height: 60px !important;
+    width: 60px !important;
+  }
+
+  main {
+    padding: 4rem 1rem !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  main h2 {
+    font-size: x-large !important;
+  }
+
+  main #todo {
+    grid-template-columns: 1fr !important;
+  }
+
+  main #todo .todo_card .card_center h4 {
+    font-size: 18px !important;
+  }
+
+  main #todo .todo_card .card_center p {
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  header {
+    padding: 6rem 2rem;
+  }
+  header #intro h1 {
+    font-size: xxx-large;
+  }
+  header #intro h2 {
+    font-size: large;
+  }
+
+  header #todoForm {
+    min-width: 50%;
+    width: 400px;
+    max-width: 100%;
+  }
+
+  header #todoForm form input[type="text"] {
+    font-size: 1.2rem;
+  }
+
+  header #todoForm form input[type="text"]::placeholder {
+    font-size: 1.2rem;
+  }
+
+  header #todoForm form button {
+    font-size: 30px;
+    height: 60px;
+    width: 60px;
+  }
+
+  main {
+    padding: 4rem 2rem;
+  }
+  main #todo {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 1000px) {
+  main {
+    padding: 6rem 2rem;
+    max-width: 960px;
+  }
+  main #todo {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
